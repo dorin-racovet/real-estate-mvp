@@ -1,0 +1,15 @@
+# System Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Global ignores (just in case)
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
