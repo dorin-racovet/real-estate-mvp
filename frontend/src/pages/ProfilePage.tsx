@@ -62,33 +62,33 @@ export const ProfilePage: React.FC = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-6">My Profile</h1>
-            <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+            <h1 className="text-3xl font-bold mb-6 dark:text-gray-100">My Profile</h1>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md max-w-2xl">
                 {success && (
-                    <div className="bg-green-100 text-green-700 p-3 rounded mb-4">
+                    <div className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 p-3 rounded mb-4">
                         Profile updated successfully!
                     </div>
                 )}
                 {error && (
-                    <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 p-3 rounded mb-4">
                         {error}
                     </div>
                 )}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
                         <Input name="name" value={formData.name} onChange={handleChange} required />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
                         <Input name="email" type="email" value={formData.email} onChange={handleChange} required />
                     </div>
                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label>
                         <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="+1234567890" />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">New Password (leave blank to keep current)</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">New Password (leave blank to keep current)</label>
                         <Input name="password" type="password" value={formData.password} onChange={handleChange} />
                     </div>
                     

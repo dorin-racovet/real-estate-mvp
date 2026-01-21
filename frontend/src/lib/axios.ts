@@ -15,9 +15,16 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Only redirect to login if there was a token (i.e., user was authenticated)
+    // Don't redirect on login page itself when credentials are invalid
     if (error.response?.status === 401) {
+      const hadToken = localStorage.getItem('token');
       localStorage.removeItem('token');
-      window.location.href = '/login';
+      
+      // Only redirect if user had a token (authenticated session expired)
+      if (hadToken && window.location.pathname !== '/login') {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }

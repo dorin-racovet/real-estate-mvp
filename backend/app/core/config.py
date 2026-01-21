@@ -24,8 +24,12 @@ class Settings(BaseSettings):
     
     # CORS
     CORS_ORIGINS: list[str] = [
-        "http://localhost:5173",
+        "http://localhost:5173",  # Vite dev server
         "http://127.0.0.1:5173",
+        "http://localhost:8080",  # E2E frontend
+        "http://127.0.0.1:8080",
+        "http://localhost",       # Production frontend
+        "http://127.0.0.1",
     ]
     
     # Admin seed user

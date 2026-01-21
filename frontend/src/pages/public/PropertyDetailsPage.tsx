@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Maximize2, Heart } from 'lucide-react';
 import { Property } from "../../types/property";
 import { propertiesApi } from "../../api/properties";
+import { useFavorites } from '../../context/FavoritesContext';
 
 export const PropertyDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [property, setProperty] = useState<Property | null>(null);
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
@@ -73,17 +75,17 @@ export const PropertyDetailsPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      <div className="flex justify-center items-center h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 dark:border-indigo-400"></div>
       </div>
     );
   }
 
   if (error || !property) {
     return (
-      <div className="container mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Oops!</h2>
-        <p className="text-gray-600 mb-8 text-lg">{error || "Property not found"}</p>
+      <div className="container mx-auto px-4 py-20 text-center bg-gray-50 dark:bg-gray-900 min-h-screen">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">Oops!</h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">{error || "Property not found"}</p>
         <Link
           to="/"
           className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition"
@@ -102,11 +104,11 @@ export const PropertyDetailsPage: React.FC = () => {
   }).format(property.price);
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-20">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-20">
       {/* Breadcrumb / Back Navigation */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="container mx-auto px-4 py-4">
-          <Link to="/" className="text-gray-500 hover:text-indigo-600 flex items-center">
+          <Link to="/" className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center">
             <svg
               className="w-5 h-5 mr-1"
               fill="none"
@@ -130,9 +132,9 @@ export const PropertyDetailsPage: React.FC = () => {
           {/* Left Column: Images & Details */}
           <div className="lg:col-span-2 space-y-8">
             {/* Image Gallery */}
-            <div className="bg-white rounded-2xl shadow-sm overflow-hidden p-1">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden p-1">
               <div 
-                className="relative h-[50vh] md:h-[65vh] bg-gray-100 rounded-xl overflow-hidden mb-2 group cursor-pointer"
+                className="relative h-[50vh] md:h-[65vh] bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden mb-2 group cursor-pointer"
                 onClick={() => {
                    if (property.images && property.images.length > 0) {
                        const foundIndex = property.images.findIndex(img => activeImage?.includes(img));
@@ -188,13 +190,13 @@ export const PropertyDetailsPage: React.FC = () => {
             </div>
 
             {/* Description & Overview */}
-            <div className="bg-white rounded-2xl shadow-sm p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-8">
               <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                <div className="flex-1">
+                  <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                     {property.title}
                   </h1>
-                  <p className="text-gray-500 flex items-center text-lg">
+                  <p className="text-gray-500 dark:text-gray-400 flex items-center text-lg">
                     <svg
                       className="w-5 h-5 mr-2"
                       fill="none"
@@ -217,37 +219,46 @@ export const PropertyDetailsPage: React.FC = () => {
                     {property.city}
                   </p>
                 </div>
-                <div className="text-3xl font-bold text-indigo-600">
-                  {formattedPrice}
+                <div className="flex flex-col items-end gap-3">
+                    <div className="text-3xl font-bold text-indigo-600">
+                    {formattedPrice}
+                    </div>
+                    <button
+                        onClick={() => isFavorite(property.id) ? removeFavorite(property.id) : addFavorite(property.id)}
+                        className={`flex items-center space-x-2 px-4 py-2 rounded-full border shadow-sm transition ${isFavorite(property.id) ? 'bg-red-50 border-red-200 text-red-500' : 'bg-white border-gray-200 text-gray-500 hover:text-red-400'}`}
+                    >
+                        <Heart size={20} fill={isFavorite(property.id) ? "currentColor" : "none"} />
+                        <span className="font-medium text-sm">{isFavorite(property.id) ? 'Saved' : 'Save'}</span>
+                    </button>
                 </div>
               </div>
 
-              <div className="border-t border-gray-100 py-6">
-                 <h3 className="text-xl font-bold text-gray-900 mb-4">Overview</h3>
+              <div className="border-t border-gray-100 dark:border-gray-700 py-6">
+                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Overview</h3>
                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div className="bg-gray-50 p-4 rounded-xl text-center">
-                         <span className="block text-gray-400 text-xs uppercase font-bold tracking-wider mb-1">Type</span>
-                         <span className="text-gray-800 font-semibold">{property.property_type.replace('_', ' ')}</span>
+                    <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl text-center">
+                         <span className="block text-gray-400 dark:text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Type</span>
+                         <span className="text-gray-800 dark:text-gray-200 font-semibold">{property.property_type.replace('_', ' ')}</span>
                     </div>
-                     <div className="bg-gray-50 p-4 rounded-xl text-center">
-                         <span className="block text-gray-400 text-xs uppercase font-bold tracking-wider mb-1">Surface</span>
-                         <span className="text-gray-800 font-semibold">{property.surface} m²</span>
+                     <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl text-center">
+                         <span className="block text-gray-400 dark:text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Surface</span>
+                         <span className="text-gray-800 dark:text-gray-200 font-semibold">{property.surface} m²</span>
                     </div>
                      {/* Placeholders for Rooms/Baths until added to model */}
-                     <div className="bg-gray-50 p-4 rounded-xl text-center opacity-50">
-                         <span className="block text-gray-400 text-xs uppercase font-bold tracking-wider mb-1">Bedrooms</span>
-                         <span className="text-gray-800 font-semibold">-</span>
+                     <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl text-center opacity-50">
+                         <span className="block text-gray-400 dark:text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Bedrooms</span>
+                         <span className="text-gray-800 dark:text-gray-200 font-semibold">-</span>
                     </div>
-                     <div className="bg-gray-50 p-4 rounded-xl text-center opacity-50">
-                         <span className="block text-gray-400 text-xs uppercase font-bold tracking-wider mb-1">Bathrooms</span>
-                         <span className="text-gray-800 font-semibold">-</span>
+                     <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl text-center opacity-50">
+                         <span className="block text-gray-400 dark:text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Bathrooms</span>
+                         <span className="text-gray-800 dark:text-gray-200 font-semibold">-</span>
                     </div>
                  </div>
               </div>
 
-              <div className="border-t border-gray-100 pt-6">
-                 <h3 className="text-xl font-bold text-gray-900 mb-4">Description</h3>
-                 <div className="prose text-gray-600 max-w-none">
+              <div className="border-t border-gray-100 dark:border-gray-700 pt-6">
+                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Description</h3>
+                 <div className="prose text-gray-600 dark:text-gray-300 max-w-none">
                      {property.description ? (
                          <p>{property.description}</p>
                      ) : (
@@ -260,16 +271,16 @@ export const PropertyDetailsPage: React.FC = () => {
 
           {/* Right Column: Contact / Sidebar */}
           <div className="lg:col-span-1 space-y-8">
-            <div className="bg-white rounded-2xl shadow-sm p-6 sticky top-24">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Agent</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6 sticky top-24">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Contact Agent</h3>
                 
                 <div className="flex items-center mb-6">
-                    <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg">
+                    <div className="h-12 w-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-lg">
                         {property.agent?.name?.charAt(0).toUpperCase() || 'A'}
                     </div>
                     <div className="ml-4">
-                        <p className="text-gray-900 font-bold">{property.agent?.name || 'Listing Agent'}</p>
-                        <p className="text-gray-500 text-sm">Real Estate Agent</p>
+                        <p className="text-gray-900 dark:text-gray-100 font-bold">{property.agent?.name || 'Listing Agent'}</p>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm">Real Estate Agent</p>
                     </div>
                 </div>
 
@@ -283,14 +294,14 @@ export const PropertyDetailsPage: React.FC = () => {
                 {property.agent?.phone ? (
                     <a 
                          href={`tel:${property.agent.phone}`}
-                         className="block w-full text-center bg-white text-indigo-600 font-bold py-3 px-4 rounded-xl border border-indigo-200 hover:bg-indigo-50 transition"
+                         className="block w-full text-center bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 font-bold py-3 px-4 rounded-xl border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-gray-600 transition"
                     >
                         Call Agent
                     </a>
                 ) : (
                     <button 
                         disabled 
-                        className="w-full bg-gray-100 text-gray-400 font-bold py-3 px-4 rounded-xl border border-gray-200 cursor-not-allowed"
+                        className="w-full bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 font-bold py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-600 cursor-not-allowed"
                     >
                         No Phone Available
                     </button>

@@ -67,6 +67,7 @@ export const AgentDashboard: React.FC = () => {
             <button
             onClick={() => setShowForm(!showForm)}
             className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+            data-testid="add-property-button"
             >
             <Plus size={20} />
             <span>{showForm ? 'Cancel' : 'Add Property'}</span>
@@ -120,12 +121,14 @@ export const AgentDashboard: React.FC = () => {
                 <Button 
                     variant="secondary" 
                     onClick={() => setDeleteConfirmation({ isOpen: false, id: null })}
+                    data-testid="cancel-delete"
                 >
                     Cancel
                 </Button>
                 <Button 
                     variant="danger" 
                     onClick={confirmDelete}
+                    data-testid="confirm-delete"
                 >
                     Delete Property
                 </Button>

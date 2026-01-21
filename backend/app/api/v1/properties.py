@@ -51,6 +51,7 @@ async def read_my_properties(
 @router.get("/published", response_model=List[PropertyRead])
 async def read_published_properties(
     session: Annotated[AsyncSession, Depends(async_get_db)],
+    city: Annotated[Optional[str], Query()] = None,
     sort: Annotated[Optional[str], Query()] = None,
     skip: int = 0,
     limit: int = 100,
@@ -60,6 +61,7 @@ async def read_published_properties(
     """
     return await crud_property.get_multi_published(
         session, 
+        city=city,
         sort=sort,
         skip=skip,
         limit=limit
@@ -103,6 +105,26 @@ async def update_property(
         
     updated_property = await crud_property.update_property(session, property, property_in)
     return updated_property
+
+@router.delete("/{property_id}", status_code=status.HTTP_200_OK)
+async def delete_property(
+    property_id: int,
+    session: Annotated[AsyncSession, Depends(async_get_db)],
+    current_user: Annotated[User, Depends(get_current_user)],
+):
+    """
+    Delete a property.
+    """
+    property = await crud_property.get_property(session, property_id)
+    if not property:
+        raise HTTPException(status_code=404, detail="Property not found")
+        
+    # Check permissions (Owner or Admin)
+    if property.agent_id != current_user.id and current_user.role != UserRole.ADMIN:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this property")
+        
+    await crud_property.delete_property(session, property_id)
+    return {"detail": "Property deleted successfully"}
 
 @router.post("/{property_id}/images", response_model=PropertyRead)
 async def upload_property_images(

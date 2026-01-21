@@ -1,0 +1,193 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - link "Agent Login" [ref=e6] [cursor=pointer]:
+      - /url: /login
+      - img [ref=e7]
+      - generic [ref=e11]: Agent Login
+    - generic [ref=e12]:
+      - heading "Find Your Dream Home" [level=1] [ref=e13]
+      - paragraph [ref=e14]: Browse our exclusive collection of premium properties available for sale.
+      - generic [ref=e15]:
+        - textbox "Search by city, address, or name..." [ref=e16]
+        - img [ref=e17]
+  - generic [ref=e20]:
+    - heading "8 Properties Found" [level=2] [ref=e22]
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - img "Updated Property Title 1768904705563" [ref=e26]
+          - generic [ref=e27]: $375,000
+        - generic [ref=e28]:
+          - heading "Updated Property Title 1768904705563" [level=3] [ref=e29]
+          - generic [ref=e30]:
+            - img [ref=e31]
+            - generic [ref=e34]: Los Angeles
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - img [ref=e37]
+              - generic [ref=e39]: 170m²
+            - generic [ref=e40]:
+              - img [ref=e41]
+              - generic [ref=e43]: "2"
+            - generic [ref=e44]:
+              - img [ref=e45]
+              - generic [ref=e48]: "2"
+          - link "View Details" [ref=e50] [cursor=pointer]:
+            - /url: /properties/9
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - img "Beautiful Apartment in City Center 8" [ref=e53]
+          - generic [ref=e54]: $350,000
+        - generic [ref=e55]:
+          - heading "Beautiful Apartment in City Center 8" [level=3] [ref=e56]
+          - generic [ref=e57]:
+            - img [ref=e58]
+            - generic [ref=e61]: New York
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - img [ref=e64]
+              - generic [ref=e66]: 160m²
+            - generic [ref=e67]:
+              - img [ref=e68]
+              - generic [ref=e70]: "4"
+            - generic [ref=e71]:
+              - img [ref=e72]
+              - generic [ref=e75]: "1"
+          - link "View Details" [ref=e77] [cursor=pointer]:
+            - /url: /properties/8
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - img "Beautiful House in City Center 7" [ref=e80]
+          - generic [ref=e81]: $325,000
+        - generic [ref=e82]:
+          - heading "Beautiful House in City Center 7" [level=3] [ref=e83]
+          - generic [ref=e84]:
+            - img [ref=e85]
+            - generic [ref=e88]: Los Angeles
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - img [ref=e91]
+              - generic [ref=e93]: 150m²
+            - generic [ref=e94]:
+              - img [ref=e95]
+              - generic [ref=e97]: "3"
+            - generic [ref=e98]:
+              - img [ref=e99]
+              - generic [ref=e102]: "2"
+          - link "View Details" [ref=e104] [cursor=pointer]:
+            - /url: /properties/7
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - img "Beautiful Apartment in City Center 6" [ref=e107]
+          - generic [ref=e108]: $300,000
+        - generic [ref=e109]:
+          - heading "Beautiful Apartment in City Center 6" [level=3] [ref=e110]
+          - generic [ref=e111]:
+            - img [ref=e112]
+            - generic [ref=e115]: New York
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - img [ref=e118]
+              - generic [ref=e120]: 140m²
+            - generic [ref=e121]:
+              - img [ref=e122]
+              - generic [ref=e124]: "2"
+            - generic [ref=e125]:
+              - img [ref=e126]
+              - generic [ref=e129]: "1"
+          - link "View Details" [ref=e131] [cursor=pointer]:
+            - /url: /properties/6
+      - generic [ref=e132]:
+        - generic [ref=e133]:
+          - img "Beautiful House in City Center 5" [ref=e134]
+          - generic [ref=e135]: $275,000
+        - generic [ref=e136]:
+          - heading "Beautiful House in City Center 5" [level=3] [ref=e137]
+          - generic [ref=e138]:
+            - img [ref=e139]
+            - generic [ref=e142]: Los Angeles
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - img [ref=e145]
+              - generic [ref=e147]: 130m²
+            - generic [ref=e148]:
+              - img [ref=e149]
+              - generic [ref=e151]: "4"
+            - generic [ref=e152]:
+              - img [ref=e153]
+              - generic [ref=e156]: "2"
+          - link "View Details" [ref=e158] [cursor=pointer]:
+            - /url: /properties/5
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - img "Beautiful Apartment in City Center 4" [ref=e161]
+          - generic [ref=e162]: $250,000
+        - generic [ref=e163]:
+          - heading "Beautiful Apartment in City Center 4" [level=3] [ref=e164]
+          - generic [ref=e165]:
+            - img [ref=e166]
+            - generic [ref=e169]: New York
+          - generic [ref=e170]:
+            - generic [ref=e171]:
+              - img [ref=e172]
+              - generic [ref=e174]: 120m²
+            - generic [ref=e175]:
+              - img [ref=e176]
+              - generic [ref=e178]: "3"
+            - generic [ref=e179]:
+              - img [ref=e180]
+              - generic [ref=e183]: "1"
+          - link "View Details" [ref=e185] [cursor=pointer]:
+            - /url: /properties/4
+      - generic [ref=e186]:
+        - generic [ref=e187]:
+          - img "Beautiful House in City Center 3" [ref=e188]
+          - generic [ref=e189]: $225,000
+        - generic [ref=e190]:
+          - heading "Beautiful House in City Center 3" [level=3] [ref=e191]
+          - generic [ref=e192]:
+            - img [ref=e193]
+            - generic [ref=e196]: Los Angeles
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - img [ref=e199]
+              - generic [ref=e201]: 110m²
+            - generic [ref=e202]:
+              - img [ref=e203]
+              - generic [ref=e205]: "2"
+            - generic [ref=e206]:
+              - img [ref=e207]
+              - generic [ref=e210]: "2"
+          - link "View Details" [ref=e212] [cursor=pointer]:
+            - /url: /properties/3
+      - generic [ref=e213]:
+        - generic [ref=e214]:
+          - img "Beautiful Apartment in City Center 2" [ref=e215]
+          - generic [ref=e216]: $200,000
+        - generic [ref=e217]:
+          - heading "Beautiful Apartment in City Center 2" [level=3] [ref=e218]
+          - generic [ref=e219]:
+            - img [ref=e220]
+            - generic [ref=e223]: New York
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - img [ref=e226]
+              - generic [ref=e228]: 100m²
+            - generic [ref=e229]:
+              - img [ref=e230]
+              - generic [ref=e232]: "4"
+            - generic [ref=e233]:
+              - img [ref=e234]
+              - generic [ref=e237]: "1"
+          - link "View Details" [ref=e239] [cursor=pointer]:
+            - /url: /properties/2
+    - generic [ref=e240]:
+      - button [disabled] [ref=e241]:
+        - img [ref=e242]
+      - generic [ref=e244]: Page 1
+      - button [ref=e245] [cursor=pointer]:
+        - img [ref=e246]
+```

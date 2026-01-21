@@ -134,17 +134,17 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({ initialData, onSucce
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow-md">
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md" data-testid="property-form">
       <div>
-        <h2 className="text-2xl font-bold mb-4">{initialData ? 'Edit Property' : 'Add New Property'}</h2>
+        <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">{initialData ? 'Edit Property' : 'Add New Property'}</h2>
         {error && (
-          <div className="bg-red-50 text-red-600 p-3 rounded-md flex items-center mb-4">
+          <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-md flex items-center mb-4" data-testid="form-error">
             <AlertCircle className="mr-2" size={20} />
             {error}
           </div>
         )}
         {success && (
-          <div className="bg-green-50 text-green-600 p-3 rounded-md flex items-center mb-4">
+          <div className="bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 p-3 rounded-md flex items-center mb-4" data-testid="form-success">
             <CheckCircle className="mr-2" size={20} />
             {initialData ? 'Property updated successfully!' : 'Property created successfully!'}
           </div>
@@ -153,32 +153,33 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({ initialData, onSucce
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-          <Input name="title" value={formData.title} onChange={handleChange} required placeholder="e.g. Modern Apartment in City Center" />
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+          <Input name="title" value={formData.title} onChange={handleChange} required placeholder="e.g. Modern Apartment in City Center" data-testid="input-title" />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Price (€)</label>
-          <Input name="price" type="number" value={formData.price} onChange={handleChange} required min="0" />
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price (€)</label>
+          <Input name="price" type="number" value={formData.price} onChange={handleChange} required min="0" data-testid="input-price" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
-          <Input name="city" value={formData.city} onChange={handleChange} required />
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">City</label>
+          <Input name="city" value={formData.city} onChange={handleChange} required data-testid="input-city" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Surface (m²)</label>
-          <Input name="surface" type="number" value={formData.surface} onChange={handleChange} required min="0" />
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Surface (m²)</label>
+          <Input name="surface" type="number" value={formData.surface} onChange={handleChange} required min="0" data-testid="input-surface" />
         </div>
 
         <div>
-           <label className="block text-sm font-medium text-gray-700 mb-1">Type</label>
+           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Type</label>
            <select 
              name="property_type" 
              value={formData.property_type} 
              onChange={handleChange}
-             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+             data-testid="select-property-type"
            >
              <option value="apartment">Apartment</option>
              <option value="house">House</option>
@@ -191,28 +192,29 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({ initialData, onSucce
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Bedrooms</label>
-          <Input name="bedrooms" type="number" value={formData.bedrooms} onChange={handleChange} min="0" />
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Bedrooms</label>
+          <Input name="bedrooms" type="number" value={formData.bedrooms} onChange={handleChange} min="0" data-testid="input-bedrooms" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Bathrooms</label>
-          <Input name="bathrooms" type="number" value={formData.bathrooms} onChange={handleChange} min="0" />
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Bathrooms</label>
+          <Input name="bathrooms" type="number" value={formData.bathrooms} onChange={handleChange} min="0" data-testid="input-bathrooms" />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
         <textarea 
           name="description" 
           value={description} 
           onChange={handleChange} 
           rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          data-testid="textarea-description"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Images <span className="text-red-500">*</span></label>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Images <span className="text-red-500 dark:text-red-400">*</span></label>
         
         {existingImages.length > 0 && (
             <div className="mb-4 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -245,7 +247,7 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({ initialData, onSucce
       </div>
 
       <div className="flex justify-end pt-4">
-        <Button type="submit" isLoading={loading}>
+        <Button type="submit" isLoading={loading} data-testid="submit-property">
           {initialData ? 'Update Property' : 'Create Property'}
         </Button>
       </div>

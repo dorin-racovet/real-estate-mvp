@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db-e2e:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: realestate_e2e
+    ports:
+      - "5433:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+
+  backend-e2e:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db-e2e/realestate_e2e
+      TESTING: "true"
+      SECRET_KEY: test-secret-key-e2e
+      ACCESS_TOKEN_EXPIRE_MINUTES: 1440
+      CORS_ORIGINS: '["http://localhost:8080","http://127.0.0.1:8080","http://localhost:5173"]'
+    depends_on:
+      - db-e2e
+    ports:
+      - "8001:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  frontend-e2e:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8001/api/v1
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend-e2e

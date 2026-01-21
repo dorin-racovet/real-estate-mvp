@@ -60,12 +60,16 @@ async def get_multi_by_owner(
 
 async def get_multi_published(
     session: AsyncSession,
+    city: str | None = None,
     sort: str | None = None,
     skip: int = 0,
     limit: int = 100
 ) -> list[Property]:
     stmt = select(Property).options(joinedload(Property.agent)).where(Property.status == "published")
     
+    if city:
+        stmt = stmt.where(Property.city == city)
+
     if sort == "price_asc":
         stmt = stmt.order_by(Property.price.asc())
     elif sort == "price_desc":
@@ -101,3 +105,10 @@ async def update_property(
     q = select(Property).options(joinedload(Property.agent)).where(Property.id == db_obj.id)
     result = await session.execute(q)
     return result.scalar_one()
+
+async def delete_property(session: AsyncSession, property_id: int) -> Property | None:
+    db_obj = await get_property(session, property_id)
+    if db_obj:
+        await session.delete(db_obj)
+        await session.commit()
+    return db_obj

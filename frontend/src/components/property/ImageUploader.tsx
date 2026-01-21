@@ -43,6 +43,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
         onClick={() => fileInputRef.current?.click()}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        data-testid="image-upload-zone"
       >
         <div className="flex flex-col items-center space-y-2">
           <Upload className="h-12 w-12 text-gray-400" />
@@ -60,13 +61,14 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           multiple
           accept="image/*"
           onChange={handleFileChange}
+          data-testid="file-input"
         />
       </div>
 
       {selectedFiles.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4" data-testid="image-preview-grid">
           {selectedFiles.map((file, index) => (
-            <div key={index} className="relative group border rounded-lg overflow-hidden h-24">
+            <div key={index} className="relative group border rounded-lg overflow-hidden h-24" data-testid="image-preview">
               <img
                 src={URL.createObjectURL(file)}
                 alt="Preview"

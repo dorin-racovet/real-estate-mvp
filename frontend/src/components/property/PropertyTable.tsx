@@ -52,7 +52,7 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white">
           {properties.map((property) => (
-            <tr key={property.id}>
+            <tr key={property.id} data-testid={`property-row-${property.id}`}>
               <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 <div className="h-10 w-10 bg-gray-200 rounded-md overflow-hidden flex-shrink-0">
                     {property.images && property.images.length > 0 ? (
@@ -72,16 +72,35 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
               <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 <span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${
                   property.status === 'published' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                }`}>
+                }`} data-testid={`property-status-${property.id}`}>
                   {property.status}
                 </span>
               </td>
               <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-2">
-                <Button variant="secondary" onClick={() => onEdit(property.id)} className="text-xs px-2 py-1">Edit</Button>
-                <Button variant="secondary" onClick={() => onToggleStatus(property.id)} className="text-xs px-2 py-1">
+                <Button 
+                  variant="secondary" 
+                  onClick={() => onEdit(property.id)} 
+                  className="text-xs px-2 py-1"
+                  data-testid={`edit-property-${property.id}`}
+                >
+                  Edit
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  onClick={() => onToggleStatus(property.id)} 
+                  className="text-xs px-2 py-1"
+                  data-testid={`toggle-status-property-${property.id}`}
+                >
                     {property.status === 'published' ? 'Unpublish' : 'Publish'}
                 </Button>
-                <Button variant="danger" onClick={() => onDelete(property.id)} className="text-xs px-2 py-1">Delete</Button>
+                <Button 
+                  variant="danger" 
+                  onClick={() => onDelete(property.id)} 
+                  className="text-xs px-2 py-1"
+                  data-testid={`delete-property-${property.id}`}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}

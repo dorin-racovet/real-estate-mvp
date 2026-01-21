@@ -39,13 +39,13 @@ export const EditPropertyPage: React.FC = () => {
          }, 1500);
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
-    if (!property) return <div>Property not found</div>;
+    if (loading) return <div className="dark:text-gray-100">Loading...</div>;
+    if (error) return <div className="dark:text-red-400">{error}</div>;
+    if (!property) return <div className="dark:text-gray-100">Property not found</div>;
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-2xl font-bold mb-6">Edit Property</h1>
+            <h1 className="text-2xl font-bold mb-6 dark:text-gray-100">Edit Property</h1>
             <PropertyForm initialData={property} onSuccess={handleSuccess} />
         </div>
     );

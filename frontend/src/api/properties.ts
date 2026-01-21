@@ -28,9 +28,9 @@ export const propertiesApi = {
     return response.data;
   },
 
-  getPublished: async (skip = 0, limit = 100): Promise<Property[]> => {
+  getPublished: async (city?: string, sort?: string, skip = 0, limit = 100): Promise<Property[]> => {
     const response = await api.get<Property[]>('/properties/published', {
-      params: { skip, limit }
+      params: { city, sort, skip, limit }
     });
     return response.data;
   },
