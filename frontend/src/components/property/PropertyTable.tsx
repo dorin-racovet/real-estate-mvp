@@ -18,13 +18,13 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
   onEdit 
 }) => {
   if (isLoading) {
-    return <div className="text-center py-4">Loading properties...</div>;
+    return <div className="text-center py-4 dark:text-gray-300">Loading properties...</div>;
   }
 
   if (properties.length === 0) {
     return (
-      <div className="text-center py-8 border rounded-lg bg-gray-50">
-        <p className="text-gray-500 mb-4">No properties found. Create your first one!</p>
+      <div className="text-center py-8 border dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800">
+        <p className="text-gray-500 dark:text-gray-400 mb-4">No properties found. Create your first one!</p>
       </div>
     );
   }
@@ -36,25 +36,25 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
   };
 
   return (
-    <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-      <table className="min-w-full divide-y divide-gray-300">
-        <thead className="bg-gray-50">
+    <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 dark:ring-gray-700 md:rounded-lg">
+      <table className="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
+        <thead className="bg-gray-50 dark:bg-gray-700">
           <tr>
-            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Thumbnail</th>
-            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
-            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Price</th>
-            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">City</th>
-            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Thumbnail</th>
+            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Title</th>
+            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Price</th>
+            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">City</th>
+            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Status</th>
             <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
               <span className="sr-only">Actions</span>
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 bg-white">
+        <tbody className="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-800">
           {properties.map((property) => (
             <tr key={property.id} data-testid={`property-row-${property.id}`}>
-              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                <div className="h-10 w-10 bg-gray-200 rounded-md overflow-hidden flex-shrink-0">
+              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <div className="h-10 w-10 bg-gray-200 dark:bg-gray-700 rounded-md overflow-hidden flex-shrink-0">
                     {property.images && property.images.length > 0 ? (
                         <img 
                           src={getImageUrl(property.images[0])} 
@@ -66,12 +66,12 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
                     )}
                 </div>
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">{property.title}</td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${property.price.toLocaleString()}</td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{property.city}</td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">{property.title}</td>
+              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">${property.price.toLocaleString()}</td>
+              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">{property.city}</td>
+              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
                 <span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${
-                  property.status === 'published' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                  property.status === 'published' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400'
                 }`} data-testid={`property-status-${property.id}`}>
                   {property.status}
                 </span>

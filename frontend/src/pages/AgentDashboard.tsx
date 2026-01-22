@@ -55,11 +55,11 @@ export const AgentDashboard: React.FC = () => {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">My Properties</h1>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">My Properties</h1>
         <div className="flex space-x-3">
             <Link 
                 to="/"
-                className="flex items-center space-x-2 bg-white text-gray-600 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-50 transition"
+                className="flex items-center space-x-2 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 transition"
             >
                 <Globe size={20} />
                 <span>View Properties</span>
@@ -92,15 +92,15 @@ export const AgentDashboard: React.FC = () => {
             <button
               onClick={() => setPage(p => Math.max(1, p - 1))}
               disabled={page === 1}
-              className="p-2 rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={20} />
             </button>
-            <span className="text-gray-600 font-medium">Page {page}</span>
+            <span className="text-gray-600 dark:text-gray-300 font-medium">Page {page}</span>
             <button
               onClick={() => setPage(p => p + 1)}
               disabled={!hasMore}
-              className="p-2 rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronRight size={20} />
             </button>
@@ -114,7 +114,7 @@ export const AgentDashboard: React.FC = () => {
         title="Confirm Deletion"
       >
         <div className="space-y-4">
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
                 Are you sure you want to delete this property? This action cannot be undone.
             </p>
             <div className="flex justify-end space-x-3">

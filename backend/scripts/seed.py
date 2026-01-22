@@ -11,7 +11,6 @@ from app.core.config import settings
 from app.models.user import User, UserRole
 from app.models.property import Property, PropertyType, PropertyStatus
 import bcrypt
-import shutil
 import httpx
 import random
 

@@ -30,7 +30,11 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
     : null;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group" data-testid="property-card">
+    <Link 
+      to={`/properties/${property.id}`}
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group block cursor-pointer" 
+      data-testid="property-card"
+    >
       <div className="relative h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
         {thumbnail ? (
           <img 
@@ -71,7 +75,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         </div>
 
         <div className="grid grid-cols-3 gap-2 py-4 border-t border-gray-50 dark:border-gray-700">
-           <div className="flex items-center justify-center text-gray-600 text-sm">
+           <div className="flex items-center justify-center text-gray-600 dark:text-gray-300 text-sm">
                <Square size={16} className="mr-2 text-indigo-400" />
                <span>{property.surface}m²</span>
            </div>
@@ -88,16 +92,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
                </div>
            )}
         </div>
-
-        <div className="mt-4">
-          <Link 
-            to={`/properties/${property.id}`}
-            className="block w-full text-center bg-gray-50 dark:bg-gray-700 hover:bg-indigo-50 dark:hover:bg-indigo-900 text-indigo-600 dark:text-indigo-400 font-semibold py-3 rounded-lg transition"
-          >
-            View Details
-          </Link>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };

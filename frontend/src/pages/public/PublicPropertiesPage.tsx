@@ -201,6 +201,192 @@ export const PublicPropertiesPage: React.FC = () => {
           </>
         )}
       </div>
+
+      {/* About Section */}
+      <div className="bg-white dark:bg-gray-800 py-16 transition-colors duration-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+              Your Trusted Real Estate Partner
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              We specialize in connecting buyers with their perfect properties. With years of experience in the real estate market, 
+              our team of professional agents is dedicated to making your property search seamless and successful. Whether you're 
+              looking for your first home, an investment property, or your dream estate, we're here to guide you every step of the way.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="p-6">
+                <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">500+</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">Properties Listed</div>
+              </div>
+              <div className="p-6">
+                <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">1,200+</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">Happy Clients</div>
+              </div>
+              <div className="p-6">
+                <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">15+</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">Years Experience</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Opportunities Section */}
+      <div className="bg-gray-50 dark:bg-gray-900 py-16 transition-colors duration-200">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              Investment Opportunities
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Discover lucrative real estate investment opportunities across different property types and locations
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 dark:border-gray-700">
+              <div className="text-3xl mb-3">🏠</div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Residential</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Single-family homes perfect for families and long-term investments with steady appreciation.
+              </p>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 dark:border-gray-700">
+              <div className="text-3xl mb-3">🏢</div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Commercial</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                High-yield commercial properties in prime locations with excellent rental income potential.
+              </p>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 dark:border-gray-700">
+              <div className="text-3xl mb-3">🏘️</div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Condos</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Modern condominiums with amenities, ideal for urban living and rental investments.
+              </p>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 dark:border-gray-700">
+              <div className="text-3xl mb-3">🌳</div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Land</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Development-ready land parcels in growing areas with high appreciation potential.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pricing Ranges Section */}
+      <div className="bg-indigo-900 dark:bg-indigo-950 text-white py-16 transition-colors duration-200">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Properties For Every Budget
+            </h2>
+            <p className="text-indigo-200 text-lg max-w-2xl mx-auto">
+              From starter homes to luxury estates, we have options that fit your budget and lifestyle
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/15 transition">
+              <div className="text-indigo-200 font-semibold mb-2">Starter Homes</div>
+              <div className="text-3xl font-bold mb-4">$150K - $350K</div>
+              <ul className="space-y-2 text-indigo-100">
+                <li>✓ 1-2 Bedrooms</li>
+                <li>✓ Perfect for first-time buyers</li>
+                <li>✓ Growing neighborhoods</li>
+                <li>✓ Great investment potential</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border-2 border-yellow-400 hover:bg-white/15 transition relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-indigo-900 px-4 py-1 rounded-full text-sm font-bold">
+                Most Popular
+              </div>
+              <div className="text-indigo-200 font-semibold mb-2">Family Homes</div>
+              <div className="text-3xl font-bold mb-4">$350K - $750K</div>
+              <ul className="space-y-2 text-indigo-100">
+                <li>✓ 3-4 Bedrooms</li>
+                <li>✓ Spacious living areas</li>
+                <li>✓ Top-rated school districts</li>
+                <li>✓ Modern amenities included</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/15 transition">
+              <div className="text-indigo-200 font-semibold mb-2">Luxury Estates</div>
+              <div className="text-3xl font-bold mb-4">$750K+</div>
+              <ul className="space-y-2 text-indigo-100">
+                <li>✓ 4+ Bedrooms</li>
+                <li>✓ Premium locations</li>
+                <li>✓ High-end finishes</li>
+                <li>✓ Exclusive communities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 dark:bg-black text-gray-300 py-12 transition-colors duration-200">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-white text-xl font-bold mb-4">RealEstate Pro</h3>
+              <p className="text-gray-400 text-sm">
+                Your trusted partner in finding the perfect property. Professional service, premium listings.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="hover:text-indigo-400 transition">Browse Properties</a></li>
+                <li><Link to="/favorites" className="hover:text-indigo-400 transition">My Favorites</Link></li>
+                <li><Link to="/login" className="hover:text-indigo-400 transition">Agent Login</Link></li>
+                <li><a href="#" className="hover:text-indigo-400 transition">Contact Us</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Property Types</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="hover:text-indigo-400 transition">Apartments</a></li>
+                <li><a href="#" className="hover:text-indigo-400 transition">Houses</a></li>
+                <li><a href="#" className="hover:text-indigo-400 transition">Condos</a></li>
+                <li><a href="#" className="hover:text-indigo-400 transition">Commercial</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2">
+                  <span>📧</span>
+                  <a href="mailto:info@realestate.pro" className="hover:text-indigo-400 transition">info@realestate.pro</a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>📞</span>
+                  <span>+1 (555) 123-4567</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>📍</span>
+                  <span>123 Real Estate St, City</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+            <p>&copy; 2026 RealEstate Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

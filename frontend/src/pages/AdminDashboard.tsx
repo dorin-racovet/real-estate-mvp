@@ -73,7 +73,7 @@ export const AdminDashboard: React.FC = () => {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Agent Management</h1>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Agent Management</h1>
         <Button onClick={() => { resetForm(); setShowCreate(!showCreate); }}>
           <div className="flex items-center space-x-1">
             <Plus size={18} />
@@ -83,8 +83,8 @@ export const AdminDashboard: React.FC = () => {
       </div>
 
       {showCreate && (
-        <div className="bg-white p-6 rounded-lg shadow mb-6 border">
-          <h3 className="text-lg font-semibold mb-4">{editingId ? 'Edit Agent' : 'New Agent'}</h3>
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-6 border dark:border-gray-700">
+          <h3 className="text-lg font-semibold mb-4 dark:text-gray-100">{editingId ? 'Edit Agent' : 'New Agent'}</h3>
           <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
             <Input 
               placeholder="Name" 
@@ -120,9 +120,9 @@ export const AdminDashboard: React.FC = () => {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 text-left text-sm font-semibold text-gray-600">
+          <thead className="bg-gray-50 dark:bg-gray-700 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">
             <tr>
               <th className="px-6 py-4">Name</th>
               <th className="px-6 py-4">Email</th>
@@ -131,25 +131,25 @@ export const AdminDashboard: React.FC = () => {
               <th className="px-6 py-4">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
             {agents.map((agent) => (
-              <tr key={agent.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 text-gray-900 font-medium">{agent.name}</td>
-                <td className="px-6 py-4 text-gray-600">{agent.email}</td>
+              <tr key={agent.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+                <td className="px-6 py-4 text-gray-900 dark:text-gray-100 font-medium">{agent.name}</td>
+                <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{agent.email}</td>
                 <td className="px-6 py-4">
-                  <span className="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 uppercase">
+                  <span className="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 uppercase">
                     {agent.role}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-gray-500 text-sm">
+                <td className="px-6 py-4 text-gray-500 dark:text-gray-400 text-sm">
                   {new Date(agent.created_at).toLocaleDateString()}
                 </td>
-                 <td className="px-6 py-4 text-gray-500 text-sm">
+                 <td className="px-6 py-4 text-gray-500 dark:text-gray-400 text-sm">
                    <div className="flex space-x-2">
-                    <button onClick={() => handleEdit(agent)} className="p-1 hover:text-blue-600">
+                    <button onClick={() => handleEdit(agent)} className="p-1 hover:text-blue-600 dark:hover:text-blue-400">
                         <Pencil size={18} />
                     </button>
-                    <button onClick={() => handleDelete(agent.id)} className="p-1 hover:text-red-600">
+                    <button onClick={() => handleDelete(agent.id)} className="p-1 hover:text-red-600 dark:hover:text-red-400">
                         <Trash2 size={18} />
                     </button>
                    </div>
