@@ -22,17 +22,8 @@ export class LoginPage {
   async login(email: string, password: string) {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
-    
-    // First wait for API success, then navigation
-    const [response] = await Promise.all([
-      this.page.waitForResponse(r => 
-        r.url().includes('/auth/access-token') && r.status() === 200
-      ),
-      this.loginButton.click()
-    ]);
-    
-    // Then wait for navigation to complete
-    await this.page.waitForURL('/dashboard', { timeout: 10000 });
+    await this.loginButton.click();
+    // Let the test decide what to wait for (success navigation or error)
   }
 
   async expectErrorMessage(message: string) {

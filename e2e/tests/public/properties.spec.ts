@@ -22,7 +22,7 @@ test.describe('Public Properties - Browse Listings', () => {
     const firstCard = page.locator('[data-testid="property-card"]').first();
     await expect(firstCard).toBeVisible({ timeout: 10000 });
     const propertyTitle = await firstCard.locator('[data-testid="property-title"]').textContent();
-    await firstCard.locator('a', { hasText: 'View Details' }).click();
+    await firstCard.click();
     await expect(page).toHaveURL(/\/properties\/\d+/, { timeout: 5000 });
     await expect(page.locator('h1, h2').filter({ hasText: propertyTitle || '' })).toBeVisible();
   });

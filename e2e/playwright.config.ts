@@ -11,7 +11,7 @@ export default defineConfig({
     ['list'],
   ],
   use: {
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://localhost:80',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -33,8 +33,8 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'echo "Services should be started via docker-compose.e2e.yml"',
-    url: 'http://localhost:8080',
+    command: 'echo "Services should be started via docker-compose"',
+    url: 'http://localhost:80',
     reuseExistingServer: true,
   },
 });

@@ -18,7 +18,7 @@ test.describe('Favorites Feature', () => {
     
     await expect(favoriteBtn).toHaveClass(/bg-red-50/);
     
-    const favLink = page.locator('a[href="/favorites"]');
+    const favLink = page.locator('a[href="/favorites"]').first();
     await expect(favLink).toContainText('(1)');
   });
 
@@ -36,14 +36,14 @@ test.describe('Favorites Feature', () => {
     await favoriteBtn.click();
     await expect(favoriteBtn).not.toHaveClass(/bg-red-50/);
     
-    const favLink = page.locator('a[href="/favorites"]');
+    const favLink = page.locator('a[href="/favorites"]').first();
     await expect(favLink).toContainText('(0)');
   });
 
   test('E2E-FAV-003: Can navigate to favorites page', async ({ page }) => {
     await page.goto('/');
     
-    await page.locator('a[href="/favorites"]').click();
+    await page.locator('a[href="/favorites"]').first().click();
     
     await expect(page).toHaveURL('/favorites');
     await expect(page.locator('h1')).toContainText('My Favorites');
@@ -81,7 +81,7 @@ test.describe('Favorites Feature', () => {
     
     await page.reload();
     
-    const favLink = page.locator('a[href="/favorites"]');
+    const favLink = page.locator('a[href="/favorites"]').first();
     await expect(favLink).toContainText('(2)');
   });
 });

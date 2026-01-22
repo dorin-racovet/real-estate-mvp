@@ -13,8 +13,8 @@ test.describe('Authentication - Login', () => {
     const email = 'agent@realestate.pro';
     const password = 'agent123';
     await loginPage.login(email, password);
-    await page.waitForURL('/', { timeout: 5000 });
-    expect(page.url()).toContain('/');
+    await page.waitForURL('/dashboard', { timeout: 5000 });
+    expect(page.url()).toContain('/dashboard');
     const token = await page.evaluate(() => localStorage.getItem('token'));
     expect(token).toBeTruthy();
   });
@@ -23,14 +23,14 @@ test.describe('Authentication - Login', () => {
     const email = 'admin@realestate.pro';
     const password = 'admin123';
     await loginPage.login(email, password);
-    await page.waitForURL('/', { timeout: 5000 });
-    expect(page.url()).toContain('/');
+    await page.waitForURL('/dashboard', { timeout: 5000 });
+    expect(page.url()).toContain('/dashboard');
     const token = await page.evaluate(() => localStorage.getItem('token'));
     expect(token).toBeTruthy();
   });
 
   test('E2E-003: Login fails with invalid credentials', async ({ page }) => {
-    const email = 'wrong@example.com';
+    const email = `invalid-${Date.now()}@example.com`;
     const password = 'wrongpassword';
     await loginPage.login(email, password);
     const hasError = await loginPage.expectErrorMessage('Invalid email or password');
@@ -39,7 +39,7 @@ test.describe('Authentication - Login', () => {
   });
 
   test('E2E-004: Rate limiting triggers after 5 failed attempts', async ({ page }) => {
-    const email = 'ratelimit@example.com';
+    const email = `ratelimit-${Date.now()}@example.com`;
     const wrongPassword = 'wrongpassword';
     for (let i = 0; i < 5; i++) {
       await loginPage.login(email, wrongPassword);
